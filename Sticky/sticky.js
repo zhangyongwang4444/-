@@ -11,14 +11,14 @@
 //     console.log($('button').offset())
 // }, 3000)
 
-
+var topbarOffset = $('#topbar').offset()
 var buttonOffset = $('button').offset()
 
 $(window).on('scroll', function () {
 
     var scrollY = window.scrollY
 
-    if (scrollY > 0) {
+    if (scrollY + 0 > topbarOffset.top) {
         $('#topbar').addClass('sticky')
     } else {
         $('#topbar').removeClass('sticky')
