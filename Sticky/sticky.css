@@ -21,3 +21,8 @@ main{
     background: #ddd;
     height: 1200px;
 }
+button.sticky{
+    position:fixed;
+    left: 0;
+    top: 60px;
+}
