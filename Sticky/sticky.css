@@ -1,7 +1,13 @@
-*{margin: 0;padding: 0;}
-.topbarPlaceholder{
-    height: 60px;
+.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+
+/*-------------以下CSS是用户自己写的-----------------------*/
+
+*{margin: 0;padding: 0;}
+
 #topbar{
     background:green;
     height: 60px;
@@ -10,19 +16,13 @@
     opacity: 0.55;
 }
 
-#topbar.sticky{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
+
 
 main{
     background: #ddd;
     height: 1200px;
 }
-button.sticky{
-    position:fixed;
-    left: 0;
-    top: 60px;
+
+#topbar.sticky{
+    width: 100%;
 }

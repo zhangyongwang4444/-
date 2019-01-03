@@ -8,7 +8,7 @@ class Sticky {
     }
     addPlaceholder() {
         this.elements.each((index, element) => {
-            $(element).wrap('<div class="stickyPlaceholder"></div>')
+            $(element).wrap('<div class="stickyPlaceholder"></div>')  //违反了正交原则
             $(element).parent().height($(element).height())
         })
     }
@@ -25,6 +25,7 @@ class Sticky {
                 var $element = $(element)
                 if (scrollY + this.offset > this.offsets[index].top) {
                     $element.addClass('sticky')
+                        .css({ top: this.offset })  //违反了正交原则
                 } else {
                     $element.removeClass('sticky')
                 }
