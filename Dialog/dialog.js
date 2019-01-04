@@ -22,8 +22,12 @@ class Dialog {
         $dialog.append($buttons)
         this.$dialog = $dialog
     }
-    open() { }
-    close() { }
+    open() {
+        this.$dialog.appendTo('body')
+    }
+    close() {
+        this.$dialog.detach()
+    }
 }
 
 
