@@ -13,13 +13,15 @@ class Dialog {
         })
         var template = `
             <div class='zywDialog'>
-                <header>${title}</header>
-                <main>${content}</main>
-                <footer></footer>
+                <div class='zywDialog-wrapper'>
+                    <header class='zywDialog-header'>${title}</header>
+                    <main class='zywDialog-main'>${content}</main>
+                    <footer class='zywDialog-footer'></footer>
+                </div>
             </div>
         `
         var $dialog = $(template)
-        $dialog.append($buttons)
+        $dialog.find('footer').append($buttons)
         this.$dialog = $dialog
     }
     open() {
@@ -35,23 +37,23 @@ class Dialog {
 
 
 x.onclick = function () {
-    var dialog = new Dialog({
-        title: '标题',
-        content: '<b>欢迎</b>',
-        buttons: [{
-            text: '确定',
-            action: function () {
-                setTimeout(() => {
-                    dialog.close()
-                })
-            }
-        },
-        {
-            text: '取消',
-            action: function () {
+var dialog = new Dialog({
+    title: '标题',
+    content: '<b>欢迎</b>',
+    buttons: [{
+        text: '确定',
+        action: function () {
+            setTimeout(() => {
                 dialog.close()
-            }
-        }]
-    })
-    dialog.open()
+            })
+        }
+    },
+    {
+        text: '取消',
+        action: function () {
+            dialog.close()
+        }
+    }]
+})
+dialog.open()
 }
