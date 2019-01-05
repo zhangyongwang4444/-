@@ -15,7 +15,7 @@ class Dialog {
         </div>
     `
     }
-    init() {
+    generateButtons() {
         let { buttons } = this.options
         let $buttons = buttons.map((buttonOption) => {
             let $b = $('<button></button>')
@@ -23,8 +23,11 @@ class Dialog {
             $b.on('click', buttonOption.action)
             return $b
         })
+        return $buttons
+    }
+    init() {
         var $dialog = $(this.template)
-        $dialog.find('footer').append($buttons)
+        $dialog.find('footer').append(this.generateButtons())
         $dialog.addClass(this.options.className)
         this.$dialog = $dialog
     }
