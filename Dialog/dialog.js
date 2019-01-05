@@ -3,24 +3,27 @@ class Dialog {
         this.options = options
         this.init()
     }
+    get template() {
+        let { title, content } = this.options
+        return `
+        <div class='zywDialog'>
+            <div class='zywDialog-wrapper'>
+                <header class='zywDialog-header'>${title}</header>
+                <main class='zywDialog-main'>${content}</main>
+                <footer class='zywDialog-footer'></footer>
+            </div>
+        </div>
+    `
+    }
     init() {
-        let { title, content, buttons } = this.options
+        let { buttons } = this.options
         let $buttons = buttons.map((buttonOption) => {
             let $b = $('<button></button>')
             $b.text(buttonOption.text)
             $b.on('click', buttonOption.action)
             return $b
         })
-        var template = `
-            <div class='zywDialog'>
-                <div class='zywDialog-wrapper'>
-                    <header class='zywDialog-header'>${title}</header>
-                    <main class='zywDialog-main'>${content}</main>
-                    <footer class='zywDialog-footer'></footer>
-                </div>
-            </div>
-        `
-        var $dialog = $(template)
+        var $dialog = $(this.template)
         $dialog.find('footer').append($buttons)
         $dialog.addClass(this.options.className)
         this.$dialog = $dialog
