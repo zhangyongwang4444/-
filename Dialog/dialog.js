@@ -22,6 +22,7 @@ class Dialog {
         `
         var $dialog = $(template)
         $dialog.find('footer').append($buttons)
+        $dialog.addClass(this.options.className)
         this.$dialog = $dialog
     }
     open() {
@@ -37,23 +38,24 @@ class Dialog {
 
 
 x.onclick = function () {
-var dialog = new Dialog({
-    title: '标题',
-    content: '<b>欢迎</b>',
-    buttons: [{
-        text: '确定',
-        action: function () {
-            setTimeout(() => {
+    var dialog = new Dialog({
+        title: '标题',
+        content: '<b>欢迎</b>',
+        className: 'userDialog',
+        buttons: [{
+            text: '确定',
+            action: function () {
+                setTimeout(() => {
+                    dialog.close()
+                }, 3000)
+            }
+        },
+        {
+            text: '取消',
+            action: function () {
                 dialog.close()
-            })
-        }
-    },
-    {
-        text: '取消',
-        action: function () {
-            dialog.close()
-        }
-    }]
-})
-dialog.open()
+            }
+        }]
+    })
+    dialog.open()
 }

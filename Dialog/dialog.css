@@ -28,3 +28,11 @@
 .zywDialog-footer button{
     margin-left: 10px;
 }
+
+
+/**************************************/
+
+.userDialog{
+    z-index: 100;
+}
+
