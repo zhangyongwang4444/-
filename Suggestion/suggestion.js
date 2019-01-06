@@ -2,16 +2,17 @@ class Suggestion {
     constructor(options) {
         this.options = options
         this.$input = $(options.input)
+        this.$ol = $('<ol></ol>')
+        this.$input.after(this.$ol)
         this.bindEvents()
     }
     bindEvents() {
         this.$input.on('input', (e) => {
             this.options.search(e.currentTarget.value, (array) => {
-                let $ol = $('<ol></ol>')
+                this.$ol.empty()
                 array.forEach((text) => {
-                    $ol.append($('<li></li>').text(text))
+                    this.$ol.append($('<li></li>').text(text))
                 })
-                this.$input.after($ol)
             })
         })
     }
