@@ -5,8 +5,10 @@ class Suggestion {
         this.bindEvents()
     }
     bindEvents() {
-        this.$input.on('input', function (e) {
-            console.log(e.currentTarget.value)
+        this.$input.on('input', (e) => {
+            this.options.search(e.currentTarget.value, (array) => {
+                console.log(array)
+            })
         })
     }
 }
@@ -15,5 +17,14 @@ class Suggestion {
 ////////////////////////////////////////////////////////////////
 
 var s = new Suggestion({
-    input: 'input'
+    input: 'input',
+    search: function (text, callback) {
+        let array = []
+        for (let i = 0; i < 5; i++) {
+            var n = parseInt(Math.random() * 100, 10)
+            array.push(text + n)
+        }
+        callback(array)
+    }
 })
+
