@@ -13,14 +13,9 @@ class Suggestion {
     }
     bindEvents() {
         let timerId
+        let lazySearch = _.debounce(this.search.bind(this), 300);
         this.$input.on('input', (e) => {
-            if (timerId) {
-                window.clearTimeout(timerId)
-            }
-            timerId = setTimeout(() => {
-                this.search(e.currentTarget.value)
-                timerId = undefined
-            }, 1000)
+            lazySearch(e.currentTarget.value)
         })
     }
     search(keyword) {
@@ -41,6 +36,7 @@ class Suggestion {
 var s = new Suggestion({
     input: 'input',
     search: function (text, callback) {
+        console.log('search了')
         let array = []
         for (let i = 0; i < 5; i++) {
             var n = parseInt(Math.random() * 100, 10)
