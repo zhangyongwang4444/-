@@ -30,6 +30,7 @@ class Suggestion {
     }
     search(keyword) {
         this.$wrapper.addClass('loading')
+        this.$wrapper.removeClass('empty')
         this.options.search(keyword, (array) => {
             this.$ol.empty()
             this.$wrapper.removeClass('loading empty')
