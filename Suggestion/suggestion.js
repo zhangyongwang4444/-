@@ -51,8 +51,9 @@ var s = new Suggestion({
     input: 'input',
     search: function (text, callback) {
         if (text === '0') {
-            return callback([])
-
+            return setTimeout(() => {
+                callback([])
+            }, 500)
         }
         let array = []
         for (let i = 0; i < 5; i++) {
@@ -61,7 +62,7 @@ var s = new Suggestion({
         }
         setTimeout(() => {
             callback(array)
-        }, 100)
+        }, 500)
 
     },
     loadingTemplate: '加载中',
