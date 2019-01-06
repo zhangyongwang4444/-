@@ -24,7 +24,10 @@ var s = new Suggestion({
             var n = parseInt(Math.random() * 100, 10)
             array.push(text + n)
         }
-        callback(array)
+        setTimeout(() => {
+            callback(array)
+        }, 2000)
+
     }
 })
 
