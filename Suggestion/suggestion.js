@@ -12,14 +12,24 @@ class Suggestion {
         this.bindEvents()
     }
     bindEvents() {
+        let timerId
         this.$input.on('input', (e) => {
-            this.$wrapper.addClass('loading')
-            this.options.search(e.currentTarget.value, (array) => {
-                this.$wrapper.removeClass('loading')
-                this.$ol.empty()
-                array.forEach((text) => {
-                    this.$ol.append($('<li></li>').text(text))
-                })
+            if (timerId) {
+                window.clearTimeout(timerId)
+            }
+            timerId = setTimeout(() => {
+                this.search(e.currentTarget.value)
+                timerId = undefined
+            }, 1000)
+        })
+    }
+    search(keyword) {
+        this.$wrapper.addClass('loading')
+        this.options.search(keyword, (array) => {
+            this.$wrapper.removeClass('loading')
+            this.$ol.empty()
+            array.forEach((text) => {
+                this.$ol.append($('<li></li>').text(text))
             })
         })
     }
