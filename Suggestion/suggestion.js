@@ -8,7 +8,10 @@ class Suggestion {
         this.$input.after(this.$ol)
         this.$loading = $('<div class="zywSuggestion-loading"></div>')
         this.$loading.html(this.options.loadingTemplate)
+        this.$empty = $('<div class="zywSuggestion-empty"></div>')
+        this.$empty.html(this.options.emptyTemplate)
         this.$ol.after(this.$loading)
+        this.$ol.after(this.$empty)
         this.bindEvents()
     }
     bindEvents() {
@@ -28,8 +31,12 @@ class Suggestion {
     search(keyword) {
         this.$wrapper.addClass('loading')
         this.options.search(keyword, (array) => {
-            this.$wrapper.removeClass('loading')
             this.$ol.empty()
+            this.$wrapper.removeClass('loading empty')
+            if (!array || array.length === 0) {
+                this.$wrapper.addClass('empty')
+                return
+            }
             array.forEach((text) => {
                 this.$ol.append($('<li></li>').text(text))
             })
@@ -43,6 +50,10 @@ class Suggestion {
 var s = new Suggestion({
     input: 'input',
     search: function (text, callback) {
+        if (text === '0') {
+            return callback([])
+
+        }
         let array = []
         for (let i = 0; i < 5; i++) {
             var n = parseInt(Math.random() * 100, 10)
@@ -53,6 +64,7 @@ var s = new Suggestion({
         }, 100)
 
     },
-    loadingTemplate: '加载中'
+    loadingTemplate: '加载中',
+    emptyTemplate: '找不到啊找不到'
 })
 

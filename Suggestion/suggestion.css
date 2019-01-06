@@ -26,3 +26,11 @@
 .zywSuggestion-list{
     display: none;
 }
+
+.zywSuggestion.empty .zywSuggestion-empty{
+    display: block;
+}
+.zywSuggestion-empty{
+    display: none;
+}
+
