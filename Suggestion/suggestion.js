@@ -13,7 +13,9 @@ class Suggestion {
     }
     bindEvents() {
         this.$input.on('input', (e) => {
+            this.$wrapper.addClass('loading')
             this.options.search(e.currentTarget.value, (array) => {
+                this.$wrapper.removeClass('loading')
                 this.$ol.empty()
                 array.forEach((text) => {
                     this.$ol.append($('<li></li>').text(text))

@@ -2,3 +2,6 @@
 .zywSuggestion-loading{
     display: none;
 }
+.zywSuggestion.loading .zywSuggestion-loading{
+    display: block;
+}
