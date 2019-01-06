@@ -7,7 +7,11 @@ class Suggestion {
     bindEvents() {
         this.$input.on('input', (e) => {
             this.options.search(e.currentTarget.value, (array) => {
-                console.log(array)
+                let $ol = $('<ol></ol>')
+                array.forEach((text) => {
+                    $ol.append($('<li></li>').text(text))
+                })
+                this.$input.after($ol)
             })
         })
     }
