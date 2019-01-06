@@ -4,7 +4,7 @@ class Suggestion {
         this.$input = $(options.input)
         this.$input.wrap('<div class="zywSuggestion"></div>')
         this.$wrapper = this.$input.parent()
-        this.$ol = $('<ol></ol>')
+        this.$ol = $('<ol class="zywSuggestion-list"></ol>')
         this.$input.after(this.$ol)
         this.$loading = $('<div class="zywSuggestion-loading"></div>')
         this.$loading.html(this.options.loadingTemplate)
