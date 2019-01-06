@@ -27,6 +27,11 @@ class Suggestion {
             // }, 1000)
             lazySearch(e.currentTarget.value)
         })
+
+        this.$ol.on('click', 'li', (e) => {
+            this.$input.val($(e.currentTarget).text())
+        })
+
     }
     search(keyword) {
         this.$wrapper.addClass('loading')
