@@ -2,8 +2,13 @@ class Suggestion {
     constructor(options) {
         this.options = options
         this.$input = $(options.input)
+        this.$input.wrap('<div class="zywSuggestion"></div>')
+        this.$wrapper = this.$input.parent()
         this.$ol = $('<ol></ol>')
         this.$input.after(this.$ol)
+        this.$loading = $('<div class="zywSuggestion-loading"></div>')
+        this.$loading.html(this.options.loadingTemplate)
+        this.$ol.after(this.$loading)
         this.bindEvents()
     }
     bindEvents() {
@@ -33,6 +38,7 @@ var s = new Suggestion({
             callback(array)
         }, 2000)
 
-    }
+    },
+    loadingTemplate: '加载中'
 })
 
