@@ -5,6 +5,8 @@ class Slide {
         this.$element.addClass('zywSlides')
         let width = this.$element.children('ol').children('li').width()
         this.$element.width(width)
+        this.$prev = $('<button>上一张</button>')
+        this.$element.append(this.$prev)
     }
 }
 
