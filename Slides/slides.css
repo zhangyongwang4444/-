@@ -7,9 +7,6 @@
     padding: 0;
     display: flex;
 }
-.zywSlides ol>li{
-    width: 100%;
-}
 .zywSlides ol>li img{
     vertical-align: top;
 }

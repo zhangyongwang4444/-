@@ -3,6 +3,8 @@ class Slide {
         this.options = options
         this.$element = $(this.options.element)
         this.$element.addClass('zywSlides')
+        let width = this.$element.children('ol').children('li').width()
+        this.$element.width(width)
     }
 }
 
@@ -12,3 +14,4 @@ var slide = new Slide({
     controls: false,
     pager: false
 })
+
