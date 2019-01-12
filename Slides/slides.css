@@ -1,0 +1,15 @@
+.zywSlides{
+    overflow: hidden;
+}
+.zywSlides ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.zywSlides ol>li{
+    width: 100%;
+}
+.zywSlides ol>li img{
+    vertical-align: top;
+}
