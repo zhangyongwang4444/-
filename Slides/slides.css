@@ -1,5 +1,6 @@
 .zywSlides{
     overflow: hidden;
+    position: relative;
 }
 .zywSlides ol{
     list-style: none;
@@ -9,4 +10,14 @@
 }
 .zywSlides ol>li img{
     vertical-align: top;
+}
+.zywSlides-prev{
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.zywSlides-next{
+    position: absolute;
+    top: 50%;
+    right: 0;
 }

@@ -5,9 +5,9 @@ class Slide {
         this.$element.addClass('zywSlides')
         let width = this.$element.children('ol').children('li').width()
         this.$element.width(width)
-        this.$prev = $('<button>上一张</button>')
+        this.$prev = $('<button class="zywSlides-prev">上一张</button>')
         this.$element.append(this.$prev)
-        this.$next = $('<button>下一张</button>')
+        this.$next = $('<button class="zywSlides-next">下一张</button>')
         this.$element.append(this.$next)
     }
 }
