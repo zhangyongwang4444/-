@@ -3,6 +3,7 @@ class Slide {
         this.options = options
         this.$element = $(this.options.element)
         this.$element.addClass('zywSlides')
+        this.timer = undefined
         let width = this.$element.children('ol').children('li').width()
         this.$element.width(width)
         this.$prev = $('<button class="zywSlides-prev">上一张</button>')
@@ -15,6 +16,12 @@ class Slide {
         if (this.options.autoPlay) {
             this.play()
         }
+        this.$element.on('mouseenter', () => {
+            this.stop()
+        }).on('mouseleave', () => {
+            this.play()
+        })
+
     }
     go(index) {
         let $ol = this.$element.children('ol')
@@ -36,9 +43,12 @@ class Slide {
         this.go(this.current - 1)
     }
     play() {
-        setInterval(() => {
+        this.timer = setInterval(() => {
             this.go(this.current + 1)
         }, 2000)
+    }
+    stop() {
+        window.clearInterval(this.timer)
     }
 }
 
