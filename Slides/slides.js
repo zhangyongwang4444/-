@@ -4,24 +4,29 @@ class Slide {
         this.$element = $(this.options.element)
         this.$element.addClass('zywSlides')
         this.timer = undefined
-        let width = this.$element.children('ol').children('li').width()
-        this.$element.width(width)
-        this.$prev = $('<button class="zywSlides-prev">上一张</button>')
-            .on('click', () => { this.prev() })
-        this.$element.append(this.$prev)
-        this.$next = $('<button class="zywSlides-next">下一张</button>')
-            .on('click', () => { this.next() })
-        this.$element.append(this.$next)
+        this.initHtml()
+        this.bindEvents()
         this.go(0)
         if (this.options.autoPlay) {
             this.play()
         }
+    }
+    initHtml() {
+        this.width = this.$element.children('ol').children('li').width()
+        this.$element.width(this.width)
+        this.$prev = $('<button class="zywSlides-prev">上一张</button>')
+        this.$element.append(this.$prev)
+        this.$next = $('<button class="zywSlides-next">下一张</button>')
+        this.$element.append(this.$next)
+    }
+    bindEvents() {
+        this.$prev.on('click', () => { this.prev() })
+        this.$next.on('click', () => { this.next() })
         this.$element.on('mouseenter', () => {
             this.stop()
         }).on('mouseleave', () => {
             this.play()
         })
-
     }
     go(index) {
         let $ol = this.$element.children('ol')
