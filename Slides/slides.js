@@ -37,7 +37,7 @@ class Slide {
             index = $items.length - 1
         }
         $ol.css({
-            transform: `translateX(${-index * 400}px)`
+            transform: `translateX(${-index * this.width}px)`
         })
         this.current = index
     }
@@ -59,7 +59,7 @@ class Slide {
 
 var slide = new Slide({
     element: '.slides',
-    autoPlay: true,
+    autoPlay: false,
     controls: false,
     pager: false
 })
