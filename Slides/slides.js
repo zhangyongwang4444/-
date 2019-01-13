@@ -6,9 +6,12 @@ class Slide {
         let width = this.$element.children('ol').children('li').width()
         this.$element.width(width)
         this.$prev = $('<button class="zywSlides-prev">上一张</button>')
+            .on('click', () => { this.prev() })
         this.$element.append(this.$prev)
         this.$next = $('<button class="zywSlides-next">下一张</button>')
+            .on('click', () => { this.next() })
         this.$element.append(this.$next)
+        this.go(0)
     }
     go(index) {
         let $ol = this.$element.children('ol')
@@ -18,7 +21,16 @@ class Slide {
         } else if (index < 0) {
             index = $items.length - 1
         }
-        $ol.css({ transform: `translateX(${-index * 400}px)` })
+        $ol.css({
+            transform: `translateX(${-index * 400}px)`
+        })
+        this.current = index
+    }
+    next() {
+        this.go(this.current + 1)
+    }
+    prev() {
+        this.go(this.current - 1)
     }
 }
 
@@ -29,4 +41,3 @@ var slide = new Slide({
     pager: false
 })
 
-slide.go(9)
