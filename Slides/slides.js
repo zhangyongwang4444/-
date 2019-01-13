@@ -12,6 +12,9 @@ class Slide {
             .on('click', () => { this.next() })
         this.$element.append(this.$next)
         this.go(0)
+        if (this.options.autoPlay) {
+            this.play()
+        }
     }
     go(index) {
         let $ol = this.$element.children('ol')
@@ -32,11 +35,16 @@ class Slide {
     prev() {
         this.go(this.current - 1)
     }
+    play() {
+        setInterval(() => {
+            this.go(this.current + 1)
+        }, 2000)
+    }
 }
 
 var slide = new Slide({
     element: '.slides',
-    autoPlay: false,
+    autoPlay: true,
     controls: false,
     pager: false
 })
